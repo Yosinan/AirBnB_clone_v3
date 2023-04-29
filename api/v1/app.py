@@ -11,6 +11,7 @@ from models import storage
 app = Flask(__name__)
 app.register_blueprint(app_views)
 
+
 @app.teardown_appcontext
 def db_teardown(exception):
     ''' close storage on teardown '''
