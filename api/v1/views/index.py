@@ -18,10 +18,10 @@ def statusApi():
     '''
     returns a JSON: "status": "OK"
     '''
-    return jsonify(status="OK")
+    return jsonify({'status': 'OK'})
 
 
-@app_views.route("/stats", strict_slashes=Flase)
+@app_views.route("/stats", strict_slashes=False)
 def stats_api():
     '''
     /stats endpoint will return JSON formatted stats on all data
