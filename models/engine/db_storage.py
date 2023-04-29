@@ -51,7 +51,7 @@ class DBStorage:
                     new_dict[key] = obj
         return (new_dict)
 
-
+'''
     def get(self, cls, id):
     """
     Retrieve an object of the specified class with the given ID.
@@ -79,7 +79,7 @@ class DBStorage:
         count += self.__session.query(class_).count()
 
     return count
-
+'''
 	
     def new(self, obj):
         """add the object to the current database session"""
