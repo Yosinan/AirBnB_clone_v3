@@ -32,7 +32,7 @@ def stats_api():
         "places": storage.count(Place),
         "reviews": storage.count(Review),
         "states": storage.count(State),
-        "user": storage.count(User)
+        "users": storage.count(User)
     })
 
 
