@@ -19,6 +19,7 @@ def db_teardown(exception):
 
 
 @app.errorhandler(404):
+def pageNotFound(error):
     '''
     404 response in JSON format
     '''
