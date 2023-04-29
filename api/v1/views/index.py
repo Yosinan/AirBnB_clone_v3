@@ -4,6 +4,13 @@
 '''
 from flask import Flask
 from api.v1.views import app_views
+from models import storage
+from models.amenity import Amenity
+from models.place import Place
+from models.user import User
+from models.state import State
+from models.review import Review
+from models.city import City
 
 
 @app_views.route("/status", strict_slashes=False)
