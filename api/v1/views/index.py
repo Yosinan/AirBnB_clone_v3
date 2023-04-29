@@ -32,7 +32,8 @@ def stats_api():
         "places": Place,
         "reviews": Review,
         "states": State,
-        "user": User}
+        "user": User
+    }
 
     for s in stats:
         stats[s] = storage.count(stats[s])
