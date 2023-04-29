@@ -22,7 +22,7 @@ def db_teardown(exception):
     '''
     404 response in JSON format
     '''
-    return make_response(jsonify({'Error: 'Not found'}), 404)
+    return make_response(jsonify({'error: 'Not found'}), 404)
 
 
 if __name__ == '__main__':
