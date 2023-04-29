@@ -13,7 +13,7 @@ from models.review import Review
 from models.city import City
 
 
-@app_views.route("/status", strict_slashes=False)
+@app_views.route("/status")
 def statusApi():
     '''
     returns a JSON: "status": "OK"
@@ -21,7 +21,7 @@ def statusApi():
     return jsonify({'status': 'OK'})
 
 
-@app_views.route("/stats", strict_slashes=False)
+@app_views.route("/stats")
 def stats_api():
     '''
     /stats endpoint will return JSON formatted stats on all data
