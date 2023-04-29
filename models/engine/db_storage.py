@@ -51,35 +51,6 @@ class DBStorage:
                     new_dict[key] = obj
         return (new_dict)
 
-    def get(self, cls, id):
-        """
-        Retrieve an object of the specified class with the given ID.
-
-        Args:
-            cls (class): The class of the object to retrieve.
-            id (int or str): The ID of the object to retrieve.
-
-        Returns:
-            An instance of the specified class with the given ID, or None if no
-            such object exists in the database.
-        """
-
-        return self.__session.query(cls).filter(cls.id == id).first()
-
-    def count(self, cls=None):
-        """
-        counts the number of objects in storage. If `cls` is not None
-        the objects of that class.
-        """
-        if cls is not None:
-            return self.__session.query(cls).count()
-
-            count = 0
-            for class_ in self.classes:
-                count += self.__session.query(class_).count()
-
-            return count
-
     def new(self, obj):
         """add the object to the current database session"""
         self.__session.add(obj)
@@ -92,6 +63,7 @@ class DBStorage:
         """delete from the current database session obj if not None"""
         if obj is not None:
             self.__session.delete(obj)
+            self.save()  # TODO: keep this?
 
     def reload(self):
         """reloads data from the database"""
@@ -103,3 +75,16 @@ class DBStorage:
     def close(self):
         """call remove() method on the private session attribute"""
         self.__session.remove()
+
+    def get(self, cls, id):
+        """A method to retrieve one object"""
+        key_name = cls + "." + id
+        return self.all().get(key_name)
+
+    def count(self, cls=None):
+        """A method to count the number of objects in storage"""
+        if not cls:
+            return len(self.all())
+        else:
+            return len([v for v in self.all().values()
+                        if type(v).__name__ == cls])
