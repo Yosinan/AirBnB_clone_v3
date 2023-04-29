@@ -78,8 +78,10 @@ class DBStorage:
 
     def get(self, cls, id):
         """A method to retrieve one object"""
-        key_name = cls + "." + id
-        return self.all().get(key_name)
+        if (cls is None or id is None):
+            return None
+        obj = list(self.all(cls).values())
+        return next(filter(lambda x: x.id == id, obj), None)
 
     def count(self, cls=None):
         """A method to count the number of objects in storage"""
