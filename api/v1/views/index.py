@@ -34,3 +34,7 @@ def stats_api():
         "states": storage.count(State),
         "user": storage.count(User)
     })
+
+
+if __name__ == '__main__':
+    pass
