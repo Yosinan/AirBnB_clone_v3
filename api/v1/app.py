@@ -21,6 +21,6 @@ def db_teardown(exception):
 if __name__ == '__main__':
     host = getenv('HBNB_API_HOST')
     port = getenv('HBNB_API_PORT')
-    app.run(host=host if host is not None else '0.0.0.0',
-            port=port if port is not None else 5000,
+    app.run(host or '0.0.0.0',
+            port or 5000,threaded=True,
     )
