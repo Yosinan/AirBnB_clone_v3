@@ -14,6 +14,7 @@ app.register_blueprint(app_views)
 
 cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
+
 @app.teardown_appcontext
 def db_teardown(exception):
     ''' close storage on teardown '''
