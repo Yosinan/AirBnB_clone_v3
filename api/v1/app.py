@@ -18,7 +18,7 @@ def db_teardown(exception):
     storage.close()
 
 
-@app.errorhandler(404):
+@app.errorhandler(404)
 def pageNotFound(error):
     '''
     404 response in JSON format
