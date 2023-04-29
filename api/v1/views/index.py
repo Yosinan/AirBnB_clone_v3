@@ -26,16 +26,16 @@ def stats_api():
     '''
     /stats endpoint will return JSON formatted stats on all data
     '''
-    stats = {
-        "amenities": Amenity,
-        "cities": City,
-        "places": Place,
-        "reviews": Review,
-        "states": State,
-        "user": User
-    }
-
+    return jsonify({
+        "amenities": storage.count(Amenity),
+        "cities": storage.count(City),
+        "places": storage.count(Place),
+        "reviews": storage.count(Review),
+        "states": storage.count(State),
+        "user": storage.count(User)
+    })
+    '''
     for s in stats:
         stats[s] = storage.count(stats[s])
 
-    return jsonify(stats)
+    return jsonify(stats)'''
