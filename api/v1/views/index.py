@@ -2,7 +2,7 @@
 '''
     Views BLuePrint
 '''
-from flask import Flask
+from flask import Flask, jsonify
 from api.v1.views import app_views
 from models import storage
 from models.amenity import Amenity
@@ -13,7 +13,7 @@ from models.review import Review
 from models.city import City
 
 
-@app_views.route("/status")
+@app_views.route('/status')
 def statusApi():
     '''
     returns a JSON: "status": "OK"
@@ -21,7 +21,7 @@ def statusApi():
     return jsonify({'status': 'OK'})
 
 
-@app_views.route("/stats")
+@app_views.route('/stats')
 def stats_api():
     '''
     /stats endpoint will return JSON formatted stats on all data
@@ -34,8 +34,3 @@ def stats_api():
         "states": storage.count(State),
         "user": storage.count(User)
     })
-    '''
-    for s in stats:
-        stats[s] = storage.count(stats[s])
-
-    return jsonify(stats)'''
