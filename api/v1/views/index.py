@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    Views BLuePrint 
+    Views BLuePrint
 '''
 from flask import Flask
 from api.v1.views import app_views
