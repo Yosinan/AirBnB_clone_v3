@@ -7,6 +7,7 @@ import sqlalchemy
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
+import hashlib
 
 class User(BaseModel, Base):
     """Representation of a user """
@@ -23,6 +24,15 @@ class User(BaseModel, Base):
         password = ""
         first_name = ""
         last_name = ""
+
+    def __setattr__(self, __name: str, __value):
+        '''
+        the password is hashed to a MD5 value
+        '''
+        if __name == "password":
+            __value = hashlib.md5(__value.encode()).hexdigest()
+        return super().__setattr__(__name, __value)
+
 
     def __init__(self, *args, **kwargs):
         """initializes user"""
