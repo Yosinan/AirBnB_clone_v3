@@ -9,6 +9,7 @@ from sqlalchemy.orm import relationship
 
 import hashlib
 
+
 class User(BaseModel, Base):
     """Representation of a user """
     if models.storage_t == 'db':
@@ -32,7 +33,6 @@ class User(BaseModel, Base):
         if __name == "password":
             __value = hashlib.md5(__value.encode()).hexdigest()
         return super().__setattr__(__name, __value)
-
 
     def __init__(self, *args, **kwargs):
         """initializes user"""
