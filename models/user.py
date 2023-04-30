@@ -25,9 +25,10 @@ class User(BaseModel, Base):
         password = ""
         first_name = ""
         last_name = ""
+    '''
 
     def __setattr__(self, __name: str, __value):
-        '''
+        
         the password is hashed to a MD5 value
 
         if __name == "password":
